@@ -1,0 +1,57 @@
+<div class="row1">
+  <div class="product-details-container" *ngIf="productData">
+    <div class="product-image-container">
+      <img class="product-img" [src]="base64ToImg(productData.imageUrl) ? base64ToImg(productData.imageUrl) : 'placeholder-image.jpg'" alt="Product Image" class="img-thumbnail" />
+    </div>
+    <div class="product-info-container">
+      <div class="details">
+        <h1>{{productData.name}}</h1>
+        <h3>Price: {{productData.price}}</h3>
+        <h4 class="ListPrice">ListPrice:{{productData.listPrice}}</h4>
+        <h4>Brand:{{productData.productBrand}}</h4>
+        <p>Description: {{productData.description}}</p>
+        <button class="form-button buy-now">Buy Now</button>
+        <button (click)="addToCart(productData.id)" class="form-button add-to-cart">Add to Cart</button>
+        <div class="quantity-group">
+          <button class="quantity-button">-</button>
+          <input type="text" value="{{productQuantity}}" class="quantity-input" />
+          <button class="quantity-button">+</button>
+        </div>
+      </div>
+      <button class="form-button compare-button" [routerLink]="'/compare/' + productData.id">Compare</button>
+    
+    </div>
+  </div>
+</div>
+
+<h1>Related Products</h1>
+  <div class="container">
+    <div class="row2">
+      <div *ngFor="let item of relatedProducts;" (click)="navigateToDetails(item.id)"class="related-product">
+        <div class="card" style="border: 1px solid hsl(195, 100%, 36%); border-radius: 5px;">
+          <img routerLink="/details/{{item.id}}" [src]="base64ToImg(item.imageUrl) ? base64ToImg(item.imageUrl) : 'placeholder-image.jpg'" alt="Product Image" class="img-thumbnail2">
+          <div class="pl-1">
+            <p class="card-title h5" style="color: #2c3e50">{{ item.productBrand }}</p>
+          </div>
+          <div class="pl-1">
+            <p class="card-title h5" style="color: #2c3e50">{{ item.name }}</p>
+            <div style="padding-left: 5px;">
+              <p class="price">$ <b>{{ item.price }}</b></p>
+            </div>
+            <div style="padding-left: 5px;">
+              <p class="ListPrice">$ <b>{{ item.listPrice }}</b></p>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  
+  
+  
+
+
+
+

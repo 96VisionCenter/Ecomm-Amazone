@@ -1,0 +1,200 @@
+<div class="container mt-2">
+  <div class="row p-2 bg-primary text-white">
+      <div class="col-9">
+          <h2>
+              <i class="fa fa-user"></i> Product List
+          </h2>
+      </div>
+      <div class="col-2 offset-1">
+          <button class="btn btn-info" data-toggle="modal" data-target="#newModal">
+              <i class="fa fa-plus"></i> Add Product
+          </button>
+      </div>
+  </div>
+
+  <div class="container">
+      <table class="table table-striped table-bordered col-12">
+          <thead>
+              <tr class="text-primary text-center">
+                  <th class="border">Name</th>
+                  <th class="border">Description</th>
+                  <th class="border">ListPrice</th>
+                  <th class="border">Price</th>
+                  <th class="border">Image</th>
+                  <th class="border">ProductBrand</th>
+                  <th class="border">Category</th>
+                  <th class="border">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let reg of getPaginatedProductList() | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: productList.length }">
+                  <td class="border">{{ reg.name }}</td>
+                  <td class="border">{{ reg.description }}</td>
+                  <td class="border">{{ reg.listPrice }}</td>
+                  <td class="border">{{ reg.price }}</td>
+                  <td *ngIf="reg.imageUrl" class="text-center border">
+                    <img [src]="base64ToImg(reg.imageUrl) ? base64ToImg(reg.imageUrl) : ''" alt="Customer Image"
+                        class="img-thumbnail">
+                </td>
+                  <td class="border">{{ reg.productBrand }}</td>
+                  <td class="border">{{ reg.category.name}}</td>
+                  <td class="text-center border">
+                      <button (click)="editedClick(reg)" data-toggle="modal" data-target="#editModal" class="btn btn-info m-1">
+                          <i class="fa fa-edit"></i> 
+                      </button>
+                      <button (click)="sweetAlertClick(reg.id)"class="btn btn-danger" >
+                          <i class="fa fa-trash"></i> 
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <div class="pagination-container">
+          <pagination-controls [(ngModel)]="p" (pageChange)="onPageChange($event)" class="pagination"></pagination-controls>
+      </div>
+  </div>
+</div>
+
+<!-- new-modal.component.html -->
+
+<form>
+  <div class="modal" id="newModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">New Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textname" class="text-primary">Name</label>
+                <input [(ngModel)]="newproduct.name" type="text" id="textname" placeholder="Enter Name" name="name"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textdescription" class="text-primary">Description</label>
+                <input [(ngModel)]="newproduct.description" type="text" id="textdescription"
+                  placeholder="Enter description" name="Description" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textnumber" class="text-primary">ListPrice</label>
+                <input [(ngModel)]="newproduct.listPrice" type="text" id="textnumber" placeholder="Enter ListPrice"
+                  name="ListPrice" class="form-control" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textnumber" class="text-primary">Price</label>
+                <input [(ngModel)]="newproduct.price" type="text" id="textnumber" placeholder="Enter price"
+                  name="price" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textimages" class="text-primary">Images</label>
+                <input [(ngModel)]="newproduct.imageUrl" type="file" (change)="onFileSelected($event)"
+                  class="form-control" placeholder="Images" id="textimages" name="images" />
+                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="img-preview" />
+              </div>
+              <div class="form-group">
+                <label for="textname" class="text-primary">Brand</label>
+                <input [(ngModel)]="newproduct.productBrand" type="text" id="textname"
+                  placeholder="Enter Brand Name" name="brand" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textname" class="text-primary">Category</label>
+                <select [(ngModel)]="newproduct.categoryId" class="nav-link dropdown-toggle text-center table-primary form-control">
+                  <option value="1">Select Your Category</option>
+                  <option *ngFor="let cnt of Categories" [value]="cnt.id" class="dropdown-item">{{cnt.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+      
+        <div class="modal-footer">
+          <button (click)="saveClick()" type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- editcase -->
+  <div class="modal" id="editModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">editProduct</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textname" class="text-primary">Name</label>
+                <input [(ngModel)]="editProduct.name" type="text" id="textname" placeholder="Enter Name" name="name"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textdescription" class="text-primary">Description</label>
+                <input [(ngModel)]="editProduct.description" type="text" id="textdescription"
+                  placeholder="Enter description" name="Description" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textnumber" class="text-primary">ListPrice</label>
+                <input [(ngModel)]="editProduct.listPrice" type="text" id="textnumber" placeholder="Enter ListPrice"
+                  name="ListPrice" class="form-control" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textnumber" class="text-primary">Price</label>
+                <input [(ngModel)]="editProduct.price" type="text" id="textnumber" placeholder="Enter price"
+                  name="price" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="textimages" class="text-primary">Images</label>
+                <input [(ngModel)]="editProduct.imageUrl" type="file" (change)="onFileSelected($event)"
+                  class="form-control" placeholder="Images" id="textimages" name="images" />
+                <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="img-preview" />
+              </div>
+              <div class="form-group">
+                <label for="textname" class="text-primary">Brand</label>
+                <input [(ngModel)]="editProduct.productBrand" type="text" id="textname"
+                  placeholder="Enter Brand Name" name="brand" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="textname" class="text-primary">Category</label>
+                <select  class="nav-link dropdown-toggle text-center table-primary form-control">
+                  <option (change)="onCategoryChange()" value="1">Select Your Category</option>
+                  <option *ngFor="let cnt of Categories" [value]="cnt.id"class="dropdown-item">{{cnt.name}}</option>
+                </select>
+              </div>
+            
+            </div>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="saveClick()" type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+  
+  

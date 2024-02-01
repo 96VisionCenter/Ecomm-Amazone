@@ -1,0 +1,173 @@
+.product-details-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.product-image-container {
+    flex:1;
+}
+
+
+.product-img {
+    width: 50%; 
+    max-width: 50%; 
+    height: auto; 
+    max-height: 2000px; 
+    object-fit: fill; 
+}
+
+.ListPrice{
+    
+    text-decoration: line-through;
+    color: #050101; 
+  
+  
+}
+
+
+.product-info-container {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.details {
+    text-align: left;
+}
+
+h1, h3, h6, p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.form-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buy-now {
+    background-color: #2ecc71;
+}
+
+.remove-from-cart {
+    background-color: #e74c3c;
+}
+
+.add-to-cart {
+    background-color: #f39c12;
+}
+
+.quantity-group {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    background-color: #073757;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0); 
+     
+}
+
+.banner-container {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px; 
+}
+
+.banner {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+}
+
+.card {
+    width: 20rem;
+    margin-right: 30px;
+    margin-bottom: 0px;
+}
+
+.img-thumbnail {
+    width: 80%;
+    height: 500px;
+    object-fit: fill;
+}
+.img-thumbnail2 {
+    width: 100%;
+    height: 250px;
+    object-fit: fill;
+}
+
+
+.card-title {
+    color: #2c3e50;
+    
+}
+
+
+.ListPrice{
+    
+        text-decoration: line-through;
+        color: #050101;  
+      
+      
+}
+
+.row1 {
+    display: flex;
+    justify-content: flex-start; 
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1; 
+    background-color: rgba(255, 255, 255, 0);
+    object-fit: cover; 
+    margin-bottom: 20px;
+}
+.row2 {
+    display: flex;
+    justify-content: flex-start; 
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1; 
+    background-color: rgba(255, 255, 255, 0);
+    object-fit: cover;
+    margin-bottom: 20px; 
+}
+
+.row1 .card-title {
+    font-weight: bold;
+    color: #ff0000; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; 
+    margin-bottom: 10px;
+}
+.row2 .card-title {
+    font-weight: bold;
+    color: #ff0000; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; 
+    margin-bottom: 10px; 
+}
+

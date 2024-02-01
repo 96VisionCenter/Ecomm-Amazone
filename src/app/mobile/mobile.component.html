@@ -1,0 +1,31 @@
+<app-headers></app-headers>
+
+<div class="container">
+    <div class="row1">
+        <!-- <button (click)="onCategorySelected(3)"></button> -->
+      <div class="card" style="width: 18rem;" *ngFor="let item of productList; let i = index">
+        <div class="card" style="border: 1px solid hsl(195, 100%, 36%); border-radius: 5px;">
+          <button (click)="onCategorySelected(1)" routerLink="/details/{{item.id}}" type="button"data-toggle="modal" data-target="#viewDetail" >
+            <img [src]="base64ToImg(item.imageUrl) ? base64ToImg(item.imageUrl) : 'placeholder-image.jpg'" alt="Product Image" class="img-thumbnail">
+    
+            <div class="pl-1">
+              <p class="card-title h5"><b style="color: #2c3e50">{{ item.productBrand }}</b></p>
+            </div>
+    
+            <div class="pl-1">
+              <p class="card-title h5"><b style="color: #2c3e50">{{ item.name }}</b></p>
+    
+              <div style="padding-left: 5px;">
+                <p class="price">offer <b>{{ item.price }}</b></p>
+              </div>
+    
+              <div style="padding-left: 5px;">
+                <p class="ListPrice">ListPrice<b>{{ item.listPrice }}</b></p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

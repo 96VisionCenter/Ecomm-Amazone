@@ -1,0 +1,95 @@
+/* Style for the overall footer */
+#navFooter {
+    background-color: #10074a; /* Set the background color */
+    padding: 20px; /* Add some padding for better spacing */
+  }
+  
+  /* Style for the links in the footer */
+  .nav_a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #0066c0; /* Set link color */
+  }
+  
+  /* Style for the footer links section */
+  .navFooterMoreOnAmazon {
+    width: 100%; /* Make the table fill the width of its container */
+    border-collapse: collapse; /* Collapse the borders between cells */
+  }
+  
+  /* Style for individual footer items */
+  .navFooterDescItem {
+    padding: 10px; /* Add padding for better spacing */
+  }
+  
+  /* Style for the copyright section */
+  .navFooterCopyright {
+    margin-top: 20px; /* Add some margin at the top for better separation */
+  }
+  
+  /* Style for the copyright text */
+  .navFooterCopyright span {
+    font-size: 12px; /* Adjust font size */
+    color: #555; /* Set text color */
+  }
+/* Style for the header component */
+
+  /* Style for the "Back to top" link in the footer */
+  #navBackToTop {
+    text-decoration: none;
+    color: #0066c0;
+  }
+  
+  /* Style for the vertical columns in the footer */
+  .navFooterVerticalColumn {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Style for individual footer columns */
+  .navFooterLinkCol {
+    flex: 1;
+    max-width: 20%;
+    padding: 10px;
+  }
+  
+  /* Style for footer column headers */
+  .navFooterColHead {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Style for the links in the footer columns */
+  .nav_a {
+    text-decoration: none;
+    color: #f4eaea;
+  }
+  
+  /* Style for the "Back to top" section */
+  .navFooterBackToTop {
+    padding: 10px;
+    background-color: #f5eded;
+  }
+  
+  /* Style for the language selection button */
+  .icp-button {
+    text-decoration: none;
+    color: #0066c0;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the Amazon logo */
+  .navFooterLogoLine {
+    margin-top: 10px;
+  }
+  
+  /* Style for the copyright section */
+  .navFooterCopyright {
+    margin-top: 20px;
+  }
+  
+  /* Style for the copyright text */
+  .navFooterCopyright span {
+    font-size: 12px;
+    color: #3de3e8;
+  }

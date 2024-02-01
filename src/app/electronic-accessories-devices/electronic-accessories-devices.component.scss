@@ -1,0 +1,67 @@
+.container {
+    background-color: rgba(255, 255, 255, 0); /* Set the background color with full transparency */
+     /* Add padding as needed */
+}
+
+.banner-container {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.banner {
+    width: 100%;
+    height: 200px; /* Adjust the height of the banner */
+    object-fit: cover;
+}
+
+.card {
+    width: 18rem;
+    margin-right: 30px;
+    margin-bottom: 0px;
+}
+
+.ListPrice{
+    
+    text-decoration: line-through;
+    color: #050101;  /* Optional: Add a color to the strikethrough text */
+  
+  
+}
+
+.img-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: fill;
+}
+
+.card-title {
+    color: #2c3e50;
+    
+}
+
+.price {
+    color: maroon;
+}
+
+.row1 {
+    display: flex;
+    justify-content: flex-start; /* Change to 'space-between' if you want space between items */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1; /* Ensure the cards are above the banner */
+    background-color: rgba(255, 255, 255, 0);
+    object-fit: cover; /* Set the background color with full transparency */
+    margin-bottom: 20px; /* Add space below the first row */
+}
+
+/* Additional styling for card title in the first row */
+.row1 .card-title {
+    font-weight: bold;
+    color: #ff0000; /* Red color as an example, modify as needed */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    margin-bottom: 10px; /* Add some space below the card title */
+}

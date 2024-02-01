@@ -1,0 +1,16 @@
+<app-headers></app-headers>
+<div class="row search-item" *ngFor="let item of searchResult">
+  <div class="col-sm-3">
+    <a routerLink="/details/{{item.id}}">
+      <img [src]="base64ToImg(item.imageUrl) ? base64ToImg(item.imageUrl) : 'placeholder-image.jpg'" alt="{{item.name}}" class="img-thumbnail2">
+    </a>
+  </div>
+  <div class="col-sm-8 details">
+    <h6>
+      <a >{{item.name}}</a>
+    </h6>
+    <p><b>Price: {{item.price}}</b></p>
+    <p>{{item.description}}</p>
+    <p>{{item.productBrand}}</p>
+  </div>
+</div>

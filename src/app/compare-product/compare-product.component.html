@@ -1,0 +1,45 @@
+
+<div class="row1">
+  <!-- First Product Details -->
+  <div class="product-details-container" *ngIf="productData">
+    <div class="product-image-container">
+      <img [src]="base64ToImg(productData.imageUrl) ? base64ToImg(productData.imageUrl) : 'placeholder-image.jpg'" alt="Product Image" class="img-thumbnail product-img" />
+    </div>
+    <div class="product-info-container">
+      <div class="details">
+        <h1>{{productData.name}}</h1>
+        <h3>Price: {{productData.price}}</h3>
+        <h4 class="ListPrice">ListPrice:{{productData.listPrice}}</h4>
+        <h4>Brand:{{productData.productBrand}}</h4>
+      </div>
+      <button class="form-button select-button" *ngIf="!selectedProduct" (click)="onSecondProductSelected(productData)">Select Second Product</button>
+    </div>
+  </div>
+
+  
+  <div class="product-details-container" *ngIf="selectedProduct">
+    <div class="product-image-container">
+      <img [src]="base64ToImg(selectedProduct.imageUrl) ? base64ToImg(selectedProduct.imageUrl) : 'placeholder-image.jpg'" alt="Product Image" class="img-thumbnail product-img" />
+    </div>
+    <div class="product-info-container">
+      <div class="details">
+        <h1>{{selectedProduct.name}}</h1>
+        <h3>Price: {{selectedProduct.price}}</h3>
+        <h4 class="ListPrice">ListPrice:{{selectedProduct.listPrice}}</h4>
+        <h4>Brand:{{selectedProduct.productBrand}}</h4>
+      </div>
+    </div>
+    <button class="form-button select-button" *ngIf="!selectedProduct" (click)="onSecondProductSelected(selectedProduct)">Select Second Product</button>
+  </div>
+
+  <!-- Recently Viewed Products -->
+  <!-- <div *ngIf="recentlyViewedProducts.length > 0">
+    <h2>Recently Viewed Products</h2>
+    <div *ngFor="let product of recentlyViewedProducts">
+      <div class="product-thumbnail">
+      ... (existing code) ...
+        <button (click)="onSecondProductSelected(product)">Select</button>
+      </div>
+    </div>
+  </div>
+</div> -->
